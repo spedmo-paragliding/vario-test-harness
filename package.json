@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aza1978/vario-test-harness.git"
+    "url": "git+https://github.com/spedmo-paragliding/vario-test-harness.git"
   },
   "author": "Spedmo LLC",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/aza1978/vario-test-harness/issues"
+    "url": "https://github.com/spedmo-paragliding/vario-test-harness/issues"
   },
-  "homepage": "https://github.com/aza1978/vario-test-harness#readme"
+  "homepage": "https://github.com/spedmo-paragliding/vario-test-harness#readme"
 }
