@@ -1,0 +1,19 @@
+{
+  "name": "vario-test-harness",
+  "version": "1.0.0",
+  "description": "Test Harness for the Spedmo Vario App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aza1978/vario-test-harness.git"
+  },
+  "author": "Spedmo LLC",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/aza1978/vario-test-harness/issues"
+  },
+  "homepage": "https://github.com/aza1978/vario-test-harness#readme"
+}
