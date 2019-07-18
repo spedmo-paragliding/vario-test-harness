@@ -37,15 +37,6 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest(dir.build + 'js'))
 });
 
-// gulp.task('pages', function() {
-//   return gulp.src([dir.src + '/**/*.html'])
-//     .pipe(htmlmin({
-//       collapseWhitespace: true,
-//       removeComments: true
-//     }))
-//     .pipe(gulp.dest('./dist'));
-// });
-
 gulp.task('server', function() {
   return gulp.src('.')
     .pipe(server({
