@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/spedmo-paragliding/vario-test-harness#readme",
   "dependencies": {
+    "lodash.template": "4.5.0",
+    "open": "6.4.0",
     "del": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
