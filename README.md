@@ -2,14 +2,14 @@
 This project allows developers to locally test their Vario UI changes on a local server before deploying them to [Spedmo](https://www.spedmo.com) for device testing. Although not all
 functionality is perfectly reproducible with the Testing Interface the majority of changes can be made offline to save time uploading builds.
 
-For testing for Android devices we recommend using Chrome and for IOS devices using the Safari browser will best reproduce the mobile experience offline. Developers wishing to go the extra mile may find benefit in using the emulators in [Android Studio](https://developer.android.com/studio) or [Xcode](https://developer.apple.com/xcode/) for best reproduction of device UI rendering.
+For testing Android devices we recommend using Chrome and for IOS devices using the Safari browser to best reproduce the mobile experience offline. Developers wishing to go the extra mile may find benefit in using the emulators in [Android Studio](https://developer.android.com/studio) or [Xcode](https://developer.apple.com/xcode/) for best reproduction of device UI rendering.
 
 ### Getting started
 Before you begin ensure you have NPM and Gulp CLI installed and they work on the command line.
 
 After pulling this project locally run the following command in the root folder
 ```
-npm update
+npm install
 ```
 
 Once NPM has installed the packages locally simple run Gulp to start your local server
