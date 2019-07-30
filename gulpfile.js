@@ -8,13 +8,32 @@ const
   uglify = require('gulp-uglify'),
   server = require('gulp-webserver'),
   concat = require('gulp-concat'),
+  upload = require('gulp-upload')
   dir = {
     src         : 'src/',
-    build       : 'build/'
-  };
+    build       : 'build/',
+    upload      : 'build-upload/'
+  },
+  buildFile = 'vario-package.zip';
+
+
+  var options = {
+    server: 'https://' + (process.argv[6]!=null ? process.argv[6] : 'www.spedmo.com') + '/bleApp/appVersionUpload.pg?uuid=' + process.argv[4],
+    data: {
+      dirname: dir.upload,
+      fileName: buildFile
+    },
+    callback: function (err, data, res) {
+      if (err) {
+        console.log('error:' + err.toString());
+      } else {
+        console.log(data.toString());
+      }
+    }
+  }
 
 gulp.task('clean', (done) => {
-  del.sync([ dir.build ]);
+  del.sync([ dir.build, dir.upload ]);
   done();
 });
 
@@ -46,6 +65,12 @@ gulp.task('server', function() {
     }));
 });
 
+gulp.task('upload', function() {
+  console.log("Uploading file " + options.data.dirname + options.data.fileName + " to " + options.server);
+  return gulp.src(dir.upload +  '**')
+    .pipe(upload(options));
+});
+
 gulp.task('default', gulp.series('clean', 'styles', 'scripts', 'server', (done) => {
   gulp.watch(dir.src + 'sass/*', gulp.series('styles'));
   gulp.watch(dir.src + 'js/*', gulp.series('scripts'));
@@ -55,7 +80,7 @@ gulp.task('default', gulp.series('clean', 'styles', 'scripts', 'server', (done) 
 // This task builds the package for upload to spedmo.com.
 gulp.task('build', gulp.series('clean', 'styles', 'scripts', (done) => {
     gulp.src(dir.build +  '**')
-        .pipe(zip('vario-package.zip'))
-        .pipe(gulp.dest(dir.build))
+        .pipe(zip(buildFile))
+        .pipe(gulp.dest(dir.upload))
     done();
 }));
