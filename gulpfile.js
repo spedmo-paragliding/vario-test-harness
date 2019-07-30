@@ -8,7 +8,8 @@ const
   uglify = require('gulp-uglify'),
   server = require('gulp-webserver'),
   concat = require('gulp-concat'),
-  upload = require('gulp-upload')
+  upload = require('gulp-upload'),
+  log = require('fancy-log'),
   dir = {
     src         : 'src/',
     build       : 'build/',
@@ -23,11 +24,12 @@ const
       dirname: dir.upload,
       fileName: buildFile
     },
+    timeout: 30000,
     callback: function (err, data, res) {
       if (err) {
-        console.log('error:' + err.toString());
+        log('error:' + err.toString());
       } else {
-        console.log(data.toString());
+        log(data.toString());
       }
     }
   }
@@ -66,7 +68,7 @@ gulp.task('server', function() {
 });
 
 gulp.task('upload', function() {
-  console.log("Uploading file " + options.data.dirname + options.data.fileName + " to " + options.server);
+  log("Uploading file to " + options.server);
   return gulp.src(dir.upload +  '**')
     .pipe(upload(options));
 });
