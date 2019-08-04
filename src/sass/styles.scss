@@ -4,4 +4,16 @@
       margin-top:20px;
       color: #00f;
     }
+
+    .consoleOutput {
+    	height: 300px;
+    	border: 1px solid #ccc;
+    	margin-top: 15px;
+    	border-radius: 10px;
+    	padding: 10px;
+    	font-family: monospace;
+    	white-space: pre-wrap;
+    	overflow: auto;
+    	font-size: 6px;
+    }
 }
