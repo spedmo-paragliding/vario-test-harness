@@ -6,7 +6,7 @@
     }
 
     .consoleOutput {
-    	height: 300px;
+    	height: 100px;
     	border: 1px solid #ccc;
     	margin-top: 15px;
       margin-bottom: 15px;
@@ -19,7 +19,8 @@
     }
 
     #map {
-      height: 400px;
+      margin-top: 15px;
+      height: 300px;
       width: 100%;
     }
 }

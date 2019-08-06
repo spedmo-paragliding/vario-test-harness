@@ -8,6 +8,9 @@ $.spedmo.bleReady = function() {
   htmlContent+='<h1>Vario Display</h1>';
   htmlContent+='<div class="container">';
   htmlContent+='<div class="row"><div class="col-xs-12"><div class="consoleOutput"></div></div></div>';
+  htmlContent+='<div class="row"><div class="col-xs-12">Latitude : <span id="showLatitude"></span></div></div>';
+  htmlContent+='<div class="row"><div class="col-xs-12">Longitude : <span id="showLongitude"></span></div></div>';
+  htmlContent+='<div class="row"><div class="col-xs-12">Altitude Change : <span id="showAltitude"></span></div></div>';
   htmlContent+='<div class="row"><div class="col-xs-12"><div id="map"></div></div></div>';
   htmlContent+='</div>';
   varioDisplay.append(htmlContent);
@@ -33,10 +36,16 @@ $.spedmo.bleReady = function() {
   // update the map with the gps location
   $.spedmo.ble.event.gpsUpdate = function(state) {
     // console.log('Updating Map location to : ' + state.lat + ", " + state.lon)
+    $('#showLatitude').html(state.lat);
+    $('#showLongitude').html(state.lon);
     var latLng = new google.maps.LatLng(state.lat, state.lon);
     googleMapMarker.setPosition(latLng);
     googleMap.setCenter(latLng);
 	};
+
+  $.spedmo.ble.event.altitudeUpdate = function(altitudeChange) {
+    $('#showAltitude').html(altitudeChange);
+  }
 
   console.log('Vario JS initalised')
 }

@@ -24,11 +24,18 @@ $(document).ready(function () {
       for(var line = 0; line < lines.length; line++){
         var currentUpdate = lines[line].trim();
 
-        if (currentUpdate.indexOf('$LXWP0')==0) {
-          // TODO: eek
-        } else if (currentUpdate.indexOf('$GP')==0) {
-          gps.update(currentUpdate);
-          $.spedmo.ble.event.gpsUpdate(gps.state);
+        try {
+          if (currentUpdate.indexOf('$LXWP0')==0) {
+            let lxwp0 = currentUpdate.split(',');
+  					lxwp0.shift();
+            $.spedmo.ble.event.altitudeUpdate(lxwp0[3]);
+
+          } else if (currentUpdate.indexOf('$GP')==0) {
+            gps.update(currentUpdate);
+            $.spedmo.ble.event.gpsUpdate(gps.state);
+          }
+        } catch (err) {
+          // do nothing...
         }
 
         // identical in the testing harness but possibly different on direct BLE feed
