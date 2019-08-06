@@ -18,6 +18,7 @@
   "homepage": "https://github.com/spedmo-paragliding/vario-test-harness#readme",
   "dependencies": {
     "del": "^5.0.0",
+    "gps": "^0.5.3",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^3.0.1",

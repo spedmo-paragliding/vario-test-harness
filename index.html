@@ -21,9 +21,10 @@ For your vario logic and code, put your changes into the /src folder subsdirecto
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pressure/2.1.2/jquery.pressure.min.js"></script>
-    <!--
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/js/all.min.js"></script>
-    -->
+    <script src="node_modules/gps/gps.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJri29_HujgpRUfiHPgyFiy6YyK0ZHjyg"></script>
+
+    <script src="/spedmo-stubs.js"></script>
 
     <!-- Spedmo Vario calls -->
     <link rel="stylesheet" href="/build/css/styles.css">
@@ -44,7 +45,18 @@ For your vario logic and code, put your changes into the /src folder subsdirecto
               <li><a href="https://jquery.com/" target="_blank">Using Jquery</a></li>
               <li><a href="https://pressurejs.com/" target="_blank">Pressure JS</a></li>
             </ul>
-            <p>Should you wish to use additional Javascript libraries, call and initalise them from your <strong>init.js</strong> rather than editing the Testing Interface.</p>
+            <p>GPS & NMEA specific</p>
+            <ul>
+              <li><a href="https://github.com/infusion/GPS.js/" target="_blank">GPS.js</a></li>
+              <li><a href="http://aprs.gids.nl/nmea/" target="_blank">NMEA sentence information</a></li>
+              <li><a href="https://nmeagen.org/" target="_blank">NMEA Generator</a></li>
+            </ul>
+            <p>Should you wish to use additional Javascript libraries, call and initalise them from your <strong>init.js</strong> by including them in the <strong>/src/js</strong> folder rather than editing the Testing Interface.</p>
+
+            <h4>NMEA file reader...</h4>
+            <form>
+            <p><input type="file" name="file" id="file"></p>
+            </form>
           </div>
         </div>
       </div>

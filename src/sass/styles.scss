@@ -9,11 +9,17 @@
     	height: 300px;
     	border: 1px solid #ccc;
     	margin-top: 15px;
+      margin-bottom: 15px;
     	border-radius: 10px;
     	padding: 10px;
     	font-family: monospace;
     	white-space: pre-wrap;
     	overflow: auto;
     	font-size: 6px;
+    }
+
+    #map {
+      height: 400px;
+      width: 100%;
     }
 }

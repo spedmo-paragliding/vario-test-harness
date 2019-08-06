@@ -1,22 +1,42 @@
-var varioDisplay, consoleOutput;
+var varioDisplay, consoleOutput, googleMap, googleMapMarker;
 
 $.spedmo = $.spedmo || {};
 $.spedmo.bleReady = function() {
   varioDisplay = $('#varioDisplay');
 
-  varioDisplay.append('<h1>Vario Display</h1>');
-  varioDisplay.append('<div class="container"><div class="row"><div class="col-xs-12"><div class="consoleOutput"></div></div></div></div>');
+  var htmlContent = "";
+  htmlContent+='<h1>Vario Display</h1>';
+  htmlContent+='<div class="container">';
+  htmlContent+='<div class="row"><div class="col-xs-12"><div class="consoleOutput"></div></div></div>';
+  htmlContent+='<div class="row"><div class="col-xs-12"><div id="map"></div></div></div>';
+  htmlContent+='</div>';
+  varioDisplay.append(htmlContent);
 
   consoleOutput = $('.consoleOutput');
 
+  // initalise Google
+  googleMap = new google.maps.Map( document.getElementById('map'), {
+    zoom: 15,
+    center: {lat: -33, lng: 151}
+  });
+  googleMapMarker = new google.maps.Marker({
+    map : googleMap,
+		draggable : false
+  });
+
   // define our custom events
-	$.spedmo.ble.event.rawBleLineFeed = function(message) {
+	$.spedmo.ble.event.rawLineFeed = function(message) {
 		consoleOutput.html($.spedmo.ble.console);
 		consoleOutput.scrollTop(consoleOutput.prop('scrollHeight'));
 	};
 
-  // start the ble device scan
-  $.spedmo.ble.scan();
+  // update the map with the gps location
+  $.spedmo.ble.event.gpsUpdate = function(state) {
+    // console.log('Updating Map location to : ' + state.lat + ", " + state.lon)
+    var latLng = new google.maps.LatLng(state.lat, state.lon);
+    googleMapMarker.setPosition(latLng);
+    googleMap.setCenter(latLng);
+	};
 
   console.log('Vario JS initalised')
 }
