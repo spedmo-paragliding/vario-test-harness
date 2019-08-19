@@ -7,7 +7,7 @@ For testing Android devices we recommend using Chrome and for IOS devices using 
 ### Getting started
 Before you begin ensure you have NPM and Gulp CLI installed and they work on the command line.
 
-After pulling this project locally run the following command in the root folder
+After cloning this project locally run the following command in the root folder
 ```
 npm install
 ```
@@ -19,7 +19,6 @@ gulp
 
 You should now have a local HTTP server up and running which can be accessed on http://localhost:8000
 
-
 ### Building for production
 
 Once you are happy with the functionality of change, simply run the following command to build a package to upload.
@@ -27,4 +26,14 @@ Once you are happy with the functionality of change, simply run the following co
 gulp build
 ```
 
-The output of this task can be found in the **/build** folder which should contain the file **vario-package.zip**. This file can be attached to your submission.
+The output of this task can be found in the **/build-upload** folder which should contain the file **vario-package.zip**. This file can be attached to your submission.
+
+### Uploading from the command line
+
+Once your build has been successfully built with no errors and the ZIP artifact has been created, you can upload your package with the following CLI command
+
+```
+upload --option 00000000-0000-0000-0000-000000000000
+```
+
+Where **00000000-0000-0000-0000-000000000000** is replaced with the UUID provided to you in the [Spedmo App Manager](https://www.spedmo.com/appManage.pg).
