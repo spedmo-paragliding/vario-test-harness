@@ -4,15 +4,18 @@ $.spedmo = $.spedmo || {};
 $.spedmo.bleReady = function() {
   varioDisplay = $('#varioDisplay');
 
-  var htmlContent = "";
-  htmlContent+='<h1>Ugly Vario - Change Me!</h1>';
-  htmlContent+='<div class="container">';
-  htmlContent+='<div class="row"><div class="col-xs-12"><div class="consoleOutput"></div></div></div>';
-  htmlContent+='<div class="row"><div class="col-xs-12">Latitude : <span id="showLatitude"></span></div></div>';
-  htmlContent+='<div class="row"><div class="col-xs-12">Longitude : <span id="showLongitude"></span></div></div>';
-  htmlContent+='<div class="row"><div class="col-xs-12">Altitude Change (m/s) : <span id="showAltitude"></span></div></div>';
-  htmlContent+='<div class="row"><div class="col-xs-12"><div id="map"></div></div></div>';
-  htmlContent+='</div>';
+  const htmlContent = `
+   <h1>Ugly Vario - Change Me!</h1>
+   <p><a href="https://github.com/spedmo-paragliding/vario-test-harness" target="_new">Download Source Code</a></p>
+   <div class="container">
+   <div class="row"><div class="col-xs-12"><div class="consoleOutput"></div></div></div>
+   <div class="row"><div class="col-xs-12">Latitude : <span id="showLatitude"></span></div></div>
+   <div class="row"><div class="col-xs-12">Longitude : <span id="showLongitude"></span></div></div>
+   <div class="row"><div class="col-xs-12">Altitude Change (m/s) : <span id="showAltitude"></span></div></div>
+   <div class="row"><div class="col-xs-12"><div id="map"></div></div></div>
+   </div>
+  `;
+
   varioDisplay.append(htmlContent);
 
   consoleOutput = $('.consoleOutput');

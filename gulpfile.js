@@ -9,7 +9,8 @@ const
   server = require('gulp-webserver'),
   concat = require('gulp-concat'),
   upload = require('gulp-upload'),
-  log = require('fancy-log'),
+  log = require('fancy-log'),  
+  terser = require('gulp-terser'),
   dir = {
     src         : 'src/',
     build       : 'build/',
@@ -54,6 +55,7 @@ gulp.task('styles', function () {
 gulp.task('scripts', function() {
   return gulp.src(dir.src + 'js/**/*.js')
     .pipe(concat('vario.js'))
+    .pipe(terser())
     .pipe(uglify())
     .pipe(gulp.dest(dir.build + 'js'))
 });
