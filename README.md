@@ -33,7 +33,7 @@ The output of this task can be found in the **/build-upload** folder which shoul
 Once your build has been successfully built with no errors and the ZIP artifact has been created, you can upload your package with the following CLI command
 
 ```
-upload --option 00000000-0000-0000-0000-000000000000
+gulp upload --option 00000000-0000-0000-0000-000000000000
 ```
 
 Where **00000000-0000-0000-0000-000000000000** is replaced with the UUID provided to you in the [Spedmo App Manager](https://www.spedmo.com/appManage.pg).
