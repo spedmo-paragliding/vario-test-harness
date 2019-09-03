@@ -19,6 +19,10 @@ gulp
 
 You should now have a local HTTP server up and running which can be accessed on http://localhost:8000
 
+### Understanding the framework
+
+Once you have successfully started your server and tested the sample functionality you should familiarise yourself with the [Spedmo Javascript Vario API](https://www.spedmo.com/content/varioAPI.pg) and the customised BLE features that are available for building your display.
+
 ### Building for production
 
 Once you are happy with the functionality of change, simply run the following command to build a package to upload.
