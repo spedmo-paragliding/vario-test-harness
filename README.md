@@ -5,7 +5,7 @@ functionality is perfectly reproducible with the Testing Interface the majority 
 For testing Android devices we recommend using Chrome and for IOS devices using the Safari browser to best reproduce the mobile experience offline. Developers wishing to go the extra mile may find benefit in using the emulators in [Android Studio](https://developer.android.com/studio) or [Xcode](https://developer.apple.com/xcode/) for best reproduction of device UI rendering.
 
 ### Getting started
-Before you begin ensure you have NPM and Gulp CLI installed and they work on the command line.
+Before you begin ensure you have NPM and Gulp CLI installed.
 
 After cloning this project locally run the following command in the root folder
 ```
