@@ -1,41 +1,38 @@
-var varioDisplay, consoleOutput, googleMap, googleMapMarker;
+var varioDisplay;
+
+var varioScaleMax = 1;
 
 $.spedmo = $.spedmo || {};
 $.spedmo.bleReady = function() {
   varioDisplay = $('#varioDisplay');
 
   const htmlContent = `
-   <h1>Ugly Vario - Change Me!</h1>
-   <p><a href="https://github.com/spedmo-paragliding/vario-test-harness" target="_new">Download Source Code</a></p>
    <div class="container">
-   <div class="row"><div class="col-xs-12"><div class="consoleOutput"></div></div></div>
-   <div class="row"><div class="col-xs-12">Latitude : <span id="showLatitude"></span></div></div>
-   <div class="row"><div class="col-xs-12">Longitude : <span id="showLongitude"></span></div></div>
-   <div class="row"><div class="col-xs-12">Altitude Change (m/s) : <span id="showAltitude"></span></div></div>
-   <div class="row"><div class="col-xs-12"><div id="map"></div></div></div>
+   <div class="row">
+        <div class="col-xs-12">
+            <div class="varioBar varioUp">
+                <div class="green"></div>
+            </div>
+            <div class="varioBar varioDown">
+                <div class="red"></div>
+            </div>
+        </div>
+   </div>
    </div>
   `;
+
+//   <div class="row"><div class="col-xs-12">Latitude : <span id="showLatitude"></span></div></div>
+//   <div class="row"><div class="col-xs-12">Longitude : <span id="showLongitude"></span></div></div>
+//   <div class="row"><div class="col-xs-12">Altitude Change (m/s) : <span id="showAltitude"></span></div></div>
+
 
   varioDisplay.append(htmlContent);
 
   consoleOutput = $('.consoleOutput');
 
-  // initalise Google Maps
-  googleMap = new google.maps.Map( document.getElementById('map'), {
-    zoom: 15,
-    center: {lat: -33, lng: 151}
-  });
-
-  // Use a default marker for our demo
-  googleMapMarker = new google.maps.Marker({
-    map : googleMap,
-		draggable : false
-  });
-
   // define our custom events
 	$.spedmo.ble.event.rawLineFeed = function(message) {
-		consoleOutput.html($.spedmo.ble.console);
-		consoleOutput.scrollTop(consoleOutput.prop('scrollHeight'));
+		console.log($.spedmo.ble.console);
 	};
 
   // update the map with the gps location
@@ -43,17 +40,24 @@ $.spedmo.bleReady = function() {
     // if we weren't passed junk data from the device... update our presentation
     if ((typeof state.lat !== 'undefined') && (state.lat!=null) && (typeof state.lon !== 'undefined') && (state.lon!=null)) {
       // console.log('Updating Map location to : ' + state.lat + ", " + state.lon)
-      $('#showLatitude').html(parseFloat(state.lat).toFixed(3));
-      $('#showLongitude').html(parseFloat(state.lon).toFixed(3));
-      var latLng = new google.maps.LatLng(state.lat, state.lon);
-      googleMapMarker.setPosition(latLng);
-      googleMap.setCenter(latLng);
+      // $('#showLatitude').html(parseFloat(state.lat).toFixed(3));
+      // $('#showLongitude').html(parseFloat(state.lon).toFixed(3));
     }
 	};
 
   $.spedmo.ble.event.altitudeUpdate = function(altitudeUpdate) {
     //console.log(altitudeUpdate)
-    $('#showAltitude').html(altitudeUpdate.varioChangeMs1);
+    // $('#showAltitude').html(altitudeUpdate.varioChangeMs1);
+    var varioChange = altitudeUpdate.varioChangeMs1;
+    var varioPercentage = (varioChange / varioScaleMax) * 100;
+
+    if (varioChange < 0) {
+        $('.varioBar .red').css({'height' : -varioPercentage + '%'});
+        $('.varioBar .green').css({'height':'0'});
+    } else {
+        $('.varioBar .red').css({'height':'0'});
+        $('.varioBar .green').css({'height' : varioPercentage + '%'});
+    }
   }
 
   console.log('Vario JS initalised')

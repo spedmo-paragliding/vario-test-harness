@@ -1,4 +1,12 @@
+
 #varioDisplay {
+
+    background-color: #000;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+
     h1 {
       text-align: center;
       margin-top:20px;
@@ -9,22 +17,30 @@
       text-align: center;
     }
 
-    .consoleOutput {
-    	height: 100px;
-    	border: 1px solid #ccc;
-    	margin-top: 15px;
-      margin-bottom: 15px;
-    	border-radius: 10px;
-    	padding: 10px;
-    	font-family: monospace;
-    	white-space: pre-wrap;
-    	overflow: auto;
-    	font-size: 6px;
+    .varioBar {
+       height: 45vh;
+       border: 1px solid white;
+       width: 10vw;
+
+       .green,
+       .red {
+         width: 100%;
+         height: 0;
+       }
+
+       .green {
+         background-color: #0f0;
+         transform: translateY(-100%);
+         margin-top: calc(45vh - 1px);
+       }
+
+       .red {
+         background-color: #f00;
+       }
     }
 
-    #map {
-      margin-top: 15px;
-      height: 300px;
-      width: 100%;
+    .varioUp {
+      margin-top: 5vw;
     }
+
 }
