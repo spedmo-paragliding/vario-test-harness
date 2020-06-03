@@ -11,7 +11,8 @@ $.spedmo.bleReady = function() {
    <div class="row"><div class="col-xs-12"><div class="consoleOutput"></div></div></div>
    <div class="row"><div class="col-xs-12">Latitude : <span id="showLatitude"></span></div></div>
    <div class="row"><div class="col-xs-12">Longitude : <span id="showLongitude"></span></div></div>
-   <div class="row"><div class="col-xs-12">Altitude Change (m/s) : <span id="showAltitude"></span></div></div>
+   <div class="row"><div class="col-xs-12">Altitude (m) : <span id="showAltitude"></span></div></div>
+   <div class="row"><div class="col-xs-12">Altitude Change (m/s) : <span id="showAltitudeChange"></span></div></div>
    <div class="row"><div class="col-xs-12"><div id="map"></div></div></div>
    </div>
   `;
@@ -53,7 +54,8 @@ $.spedmo.bleReady = function() {
 
   $.spedmo.ble.event.altitudeUpdate = function(altitudeUpdate) {
     //console.log(altitudeUpdate)
-    $('#showAltitude').html(altitudeUpdate.varioChangeMs1);
+    $('#showAltitude').html(parseFloat(altitudeUpdate.baroAltitudeM).toFixed(0));
+    $('#showAltitudeChange').html(altitudeUpdate.varioChangeMs1);
   }
 
   console.log('Vario JS initalised')
