@@ -1,10 +1,6 @@
+$pageHeight : calc(100vh - 65px);
 
 #varioDisplay {
-
-    background-color: #000;
-    position: absolute;
-    top: 0;
-    bottom: 0;
     width: 100%;
 
     h1 {
@@ -17,10 +13,37 @@
       text-align: center;
     }
 
+    .varioIndicator {
+      position: absolute;
+      font-size: 10px;
+      top: calc(#{$pageHeight} * 0.05);
+
+      div {
+        margin-left: calc(10vw + 5px);
+        position: relative;
+        height: 10px;
+        line-height: 10px;
+        margin-bottom: calc(calc(calc(#{$pageHeight} * 0.9) / 10) - 10.5px);
+
+        &.marker {
+          &:before {
+            position: absolute;
+            width: 2vw;
+            content: '';
+            border-top: 1px solid #000;
+            left: calc(-2vw - 6px);
+            margin-top: 5px;
+            z-index: 1;
+          }
+        }
+      }
+    }
+
     .varioBar {
-       height: 45vh;
-       border: 1px solid white;
+       height: calc(#{$pageHeight} * 0.45);
+       border: 1px solid #000;
        width: 10vw;
+       margin: -1px;
 
        .green,
        .red {
@@ -31,7 +54,7 @@
        .green {
          background-color: #0f0;
          transform: translateY(-100%);
-         margin-top: calc(45vh - 1px);
+         margin-top: calc(calc(#{$pageHeight} * 0.45) - 2px);
        }
 
        .red {
@@ -40,7 +63,21 @@
     }
 
     .varioUp {
-      margin-top: 5vw;
+      margin-top: 5vh;
+    }
+
+    .readings {
+      height: $pageHeight;
+      width: 100vw;
+      text-align: center;
+      vertical-align: middle;
+      display: table-cell;
+
+      font-size: 19px;
+
+      div {
+        margin-bottom: calc(#{$pageHeight} / 15);
+      }
     }
 
 }
