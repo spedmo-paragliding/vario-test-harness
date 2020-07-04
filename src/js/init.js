@@ -73,10 +73,6 @@ $.spedmo.bleReady = function() {
   $.spedmo.ble.event.gpsUpdate = function(state) {
     // if we weren't passed junk data from the device... update our presentation
     if ((typeof state.lat !== 'undefined') && (state.lat!=null) && (typeof state.lon !== 'undefined') && (state.lon!=null)) {
-      // console.log('Updating Map location to : ' + state.lat + ", " + state.lon)
-      // $('#showLatitude').html(parseFloat(state.lat).toFixed(3));
-      // $('#showLongitude').html(parseFloat(state.lon).toFixed(3));
-
       if (typeof lastLatitude!=='undefined' && typeof lastLongitude !== 'undefined') {
         if (lastLatitude!=state.lat || lastLongitude!=state.lon) {
           var varioDistanceChange = calculateDistance(lastLatitude, lastLongitude, state.lat, state.lon);
@@ -84,12 +80,6 @@ $.spedmo.bleReady = function() {
           varioDistance += varioDistanceChange;
           // update distance display
           $('.distance').html(varioDistance.toFixed(1) + ' km');
-
-          // update speed display
-          //alert('time difference ' + ( varioDistanceChange / ((new Date().getTime() - lastTimestamp) / 3600)));
-          // var varioSpeed = varioDistanceChange / ((new Date().getTime() - lastTimestamp) / 3600);
-          // alert(varioSpeed.toFixed(0));
-
           $('.speed').html(state.speed.toFixed(0) + ' km/hr');
         }
       }
